@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>月次報告画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+<div class="menu">
+		<div class="main_frame">
+			<p>月次報告画面</p>
+		</div>
+	</div>
+
+	<div class="main_wrapper">
+		<div class="main_admin">
+			<div>表示させたい年月を選択してください</div>
+			<form action="/emp/view_timesheet" method="post">
+				<select name="thisMonth" class="margin_r" required>
+					<th:block th:each="ye : ${year}">
+						<option th:text="${ye}"></option>
+					</th:block>
+					
+					<th:block th:each="Lye : ${lastYear}">
+						<option th:text="${Lye}"></option>
+					</th:block>
+				</select> <input type="submit" value="タイムシートを表示する" class="attendance_select_timesheet">
+			</form>
+		</div>
+
+		<div class="a_logout_button">
+			<a href="/emp/login">
+				<button class="display_button">メニューに戻る</button>
+			</a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

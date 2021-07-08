@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>管理者ログイン画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+
+	<div class="menu">
+		<div class="main_frame">
+			<p>労働時間修正完了画面</p>
+		</div>
+	</div>
+	<div class="main_wrapper">
+		<div class="main_admin">
+			<p>
+				従業員コード<span th:text="${employeeCode}"></span>の労働時間を一部変更しました
+			</p>
+		</div>
+
+		<div class="logout_button">
+			<a href="/admin/menuBack">
+				<button class="display_button">メニューに戻る</button>
+			</a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

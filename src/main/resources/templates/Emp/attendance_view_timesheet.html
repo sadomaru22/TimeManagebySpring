@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タイムシート</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class= "menu">
+	<div class= "main_frame">
+		<p>タイムシート</p>
+	</div>
+	</div>
+		<div class="name_format" th:text="|名前：${emplName}|"></div>
+		<div class="name_format" th:text="|${thisYear}年 ${thisMonth}月|"></div>
+
+		<div class="edit_top">
+		<div class="show_all_table">
+		<table>
+		<tr class="top_table"><th>日にち</th><th>出勤</th><th>退勤</th><th>実働時間</th></tr>
+
+			<th:block th:each="i : ${#numbers.sequence(1, dayOfMonth)} "> <!-- ✨OK -->
+			
+					<tr class="main_table">
+					<td th:text="|${thisMonth} 月 ${i} 日|"></td>  <!-- 日にち -->
+	
+					<th:block th:each=" workTime : ${workTimeThisMonthList}">  <!-- こっから全く表示されん -->
+						<th:block th:if="${workTime.startTime == null && workTime.finishTime == null}">
+							<td></td><td></td><td>休</td>
+						</th:block>
+					
+						<th:block th:if="${workTime.workDate.format(dd)} == ${i.toString()}">
+							<th:block th:if="${workTime.startTime} != null">
+							<td th:text="${workTime.startTime.format(timeFormat)}"></td>
+							</th:block>
+							<th:block th:if="${workTime.finishTime} != null">
+							<td th:text="${workTime.finishTime.format(timeFormat)}"></td>
+							</th:block>
+							<th:block th:if="${workTime.workingHours} != 0">
+							<td th:text="|${workTime.workingHours}時間${workTime.workingMins}分|"></td>
+							</th:block>
+						</th:block>
+					</th:block>
+					</tr>
+					
+			</th:block>
+
+		</table>
+		
+		<div class="sum_right">
+		<span style="border-bottom: solid 2px black;" th:text="|実働時間合計： ${sum}時間|">&ensp;</span>
+		<a href="/emp/timesheet_scv"><button>時間を出力する</button></a>
+		</div>
+		
+		</div></div>
+		
+		
+		<div class="signature_form"><table border="1">
+		<tr><th>本人印</th><th>承認印</th></tr>
+		<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+		</table></div>
+		<div class="link_button">
+			<a href="/emp/menu">
+				<button class="display_button">メニュー画面に戻る</button>
+			</a>
+		</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

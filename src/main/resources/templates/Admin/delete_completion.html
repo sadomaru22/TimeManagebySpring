@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員情報削除完了</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+		<div class="menu">
+		<div class="main_frame">
+			<p>従業員情報削除完了画面</p>
+		</div>
+	</div>
+	<div class="main_wrapper">
+		<div class="main_admin">
+			<p>
+				従業員コード<span th:text="${ec}"></span>の従業員情報を削除完了しました
+			</p>
+		</div>
+
+		<div class="logout_button">
+			<a href="/admin/menuBack">
+				<button class="display_button">メニューに戻る</button>
+			</a>
+		</div>
+	</div>	
+<div th:replace="Emp/footer"></div>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員ログイン画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p th:text="${message}"></p>
+			<p>従業員用ログイン画面</p>
+		</div>
+	</div>
+
+	<div class="main_wrapper">
+		<form action="/emp/menu" method="post">
+			<div class="regist_table">
+				<table>
+					<tr>
+						<td>従業員コード</td>
+						<td>：</td>
+						<td><input type="text" name="employee_code" required></td>
+					</tr>
+					<tr>
+						<td>パスワード</td>
+						<td>：</td>
+						<td><input type="password" name="password" required></td>
+					</tr>
+				</table>
+			</div>
+			<div class="admin_user_button">
+				<input type="submit" class="login_button" value="ログイン"> <input
+					type="reset" class="clear_button">
+			</div>
+
+		</form>
+		<div class="admin_user_button">
+			<a class="display_button" href="/emp"><button>Topページへ</button></a>
+		</div>
+	</div>
+
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

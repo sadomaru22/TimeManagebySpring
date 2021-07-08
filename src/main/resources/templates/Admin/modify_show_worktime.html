@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>時間修正画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p>労働時間の修正</p>
+		</div>
+	</div>
+	
+	<div class="main_wrapper">
+		<div class="main_admin">
+			<div>修正が完了したら下の「完了」ボタンを押してください。</div>
+			<form action="/admin/modify_comp_worktime" method="post" th:object="${wt}">
+			<input type="hidden" th:field="*{employee_code}">
+			<input type="hidden" name="day" th:value="${thisMonthDate}">
+				<div class="show_all_table">
+					<table class="border_table">
+						<tr class="top_table">
+							<td>出勤時間</td>
+							<td>退勤時間</td>
+						</tr>
+						
+						<tr class="main_table">
+							<td>
+							<input type="text" th:field="*{startTime}">
+							</td>
+							<td>
+							<input type="text" th:field="*{finishTime}">
+							</td>
+						</tr>
+					</table>
+					
+					<input type="submit" class="edit_button" name="submit">
+				
+				</div>
+			</form>
+
+		</div>
+
+		<div class="a_logout_button">
+			<a href="/admin/menuBack">
+				<button class="display_button">メニューに戻る</button>
+			</a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

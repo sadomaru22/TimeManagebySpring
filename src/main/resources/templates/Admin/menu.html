@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>管理者用メニュー</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p>管理者用メニュー画面</p>
+		</div>
+	</div>
+
+	<div class="main_wrapper">
+		<div class="employee_button">
+
+			<a href="/admin/regist_employee" class="regist_button">
+				<button class="display_button">従業員登録</button>
+			</a> <a href="/admin/display_employee_list">
+				<button class="display_button">従業員情報一覧</button>
+			</a>
+		</div>
+		<div class="logout_button">
+			<a href="/admin/regist_adminuser">
+				<button class="display_button">管理者権限を付与する</button>
+			</a>
+		</div>
+		<div class="link_main_button">
+			<form action="/admin/logout" method="post">
+				<button class="display_button">ログアウト</button>
+			</form>
+		</div>
+		<div class=link_main_button>
+			<a class="display_button" href="/emp"><button>Topページへ</button></a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

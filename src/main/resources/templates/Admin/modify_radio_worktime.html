@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>労働時間の修正</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p>修正する日時の選択</p>
+		</div>
+	</div>
+
+	<div class="main_wrapper">
+		<div class="main_admin">
+			<div>修正したい日時を選択してください</div>
+			<span th:text="${year}"></span>年
+			<span th:text="${month}"></span>月
+			
+			<form action="/admin/modify_check_worktime" method="post">
+				<select name="thisDate" required>
+				<th:block th:each="Arw : ${arw}">
+					<option th:text="${Arw}"></option>
+				</th:block>
+				</select>
+				日 
+				<input type="submit" value="日時を確定する" class="attendance_select_timesheet">
+			</form>
+			</div>
+		</div>
+
+		<div class="a_logout_button">
+			<a href="/admin/menuBack">
+				<button class="display_button">メニューに戻る</button>
+			</a>
+		</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

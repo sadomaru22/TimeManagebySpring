@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログアウト画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p>ログアウトしました。</p>
+		</div>
+	</div>
+
+	<div class="main_wrapper">
+		<div class="main_admin">本日もお疲れ様でした！！！</div>
+
+		<div class="logout_button">
+			<input type="button" class="display_button" value="ログイン画面に戻る"
+				onclick="location.href='/emp/login';">
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>	
+</body>
+</html>

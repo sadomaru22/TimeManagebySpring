@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+
+.i_main_wrapper {
+	margin-top: 50px; 
+	width: 100%;
+	height: 200px;
+	text-align: center;
+
+}
+.index_l_button {
+	margin-right: 20px;
+}

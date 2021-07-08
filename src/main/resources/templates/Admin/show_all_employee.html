@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員一覧</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+
+	<div class="menu">
+		<div class="main_frame">
+			<p>従業員一覧</p>
+		</div>
+	</div>
+	<div class="main_wrapper">
+		<form action="/admin/checkEditDelete" method="post"
+			onsubmit="return chkShowAll(this.name)">
+			<div class="show_all_table">
+				<table class="border_table">
+					<tr class="top_table">
+						<td></td>
+						<td>従業員コード</td>
+						<td>氏名</td>
+						<td>所属部署</td>
+					</tr>
+
+					<th:block th:each="em : ${viewList}">
+					<tr class="main_table">
+						<td><input type="radio" name="employee_code"
+							th:value="${em.employee_code}"></td>
+						<td th:text="${em.employee_code}"></td>
+						<td th:text="${em.name}"></td>
+						<td th:text="${em.post}"></td>
+					</tr>
+					</th:block>
+					
+				</table>
+			</div>
+
+			<div class="comment_show_all" id="comment_show_all">編集・削除したい従業員にチェックを入れてください</div>
+			<div class="employee_button">
+				<input type="submit" class="edit_button" name="submit"
+					value="従業員を編集する" onclick="setValue('edit_submit')">
+				
+				<input type="submit" class="edit_button" name="submit"
+					value="労働時間の修正" onclick="setValue('edit_submit')">
+					 
+				<input type="submit" name="submit" value="従業員を削除する"
+					onclick="setValue('delete_submit')"> <input type="hidden"
+					name="chkBtn">
+			</div>
+		</form>
+		<div class="link_main_button">
+			<a href="/admin/menuBack">
+				<button class="display_button">メニュー画面に戻る</button>
+			</a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

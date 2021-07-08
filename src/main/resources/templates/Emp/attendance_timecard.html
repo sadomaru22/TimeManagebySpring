@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/JS/function.js}"></script>
+<title>タイムカード</title>
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="menu">
+		<div class="main_frame">
+			<p>タイムカード</p>
+		</div>
+	</div>
+
+	<div class="display_top">
+	<p th:text="${message2}"></p>
+		<!-- <% if (message2 != null) { %>
+					<p class="commit_message"><%= message2 %></p>
+		<% } %>-->
+		<p id="today_area" th:text="${now}"></p>
+		<p id="RealtimeClockArea"></p> <!--jsからSetIntervalくる -->
+	</div>
+	<div th:if="${startWork == null}">
+	<!--<%  
+		if (startWork == null) {	 
+			%>-->
+	<form action="/emp/timecard" method="POST" class="attendance_form">
+		<input type="hidden" name="attendance" value="出勤処理"> <input
+			type="submit" name="submit" value="出勤" id="disableStartWorkButton"
+			class="attendance_timecard">
+	</form>
+	</div>
+	<div th:if="${startwork != null}">
+	<!--<%  
+		} else { //disableで無効化   //二回目以降、もしくは出勤押していったんページを離れて、再ログインした場合非表示
+	%>-->
+	<form action="/emp/timecard" method="POST" class="attendance_form">
+		<input type="hidden" name="attendance" value="出勤処理"> <input
+			type="submit" name="submit" value="出勤" id="disableStartWorkButton"
+			disabled="disabled" class="attendance_timecard2">
+	</form>
+	</div>
+	<div th:if="${finishWork != null && startWork != null}">
+	<!--<%
+		}   //
+			if (finishWork != null && startWork != null) { //!=null すなわち"disablef"
+	%>-->
+	<form action="/emp/timecard" method="POST" class="attendance_form">
+		<input type="hidden" name="attendance" value="退勤処理"> <input
+			type="submit" name="submit" value="退勤" id="disableFinishWorkButton"
+			class="attendance_timecard">
+	</form>
+	</div>
+	<div th:unless="${finishWork != null && startWork != null}">
+<!--<%
+	} else {
+%>-->		
+	<form action="/emp/timecard" method="POST" class="attendance_form">
+		<input type="hidden" name="attendance" value="退勤処理"> <input
+			type="submit" name="submit" value="退勤" id="disableFinishWorkButton"
+			disabled="disabled" class="attendance_timecard2">
+	</form>
+	</div>
+<!--<% 	}
+%>-->
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

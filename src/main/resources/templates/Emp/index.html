@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/JS/function.js}"></script>
+<title>トップページ</title>
+</head>
+<body>
+
+<div th:replace="Emp/header"></div>
+
+	<div class= "menu">
+		<div class= "main_frame">
+			<p>TOPページ</p>
+		</div>
+ 	</div>
+	<div class="i_main_wrapper">
+		<div class="employee_button">
+			<a href="/admin/login"><button>管理者用メニュー</button></a>
+			<a href="/emp/login"><button>従業員メニュー</button></a>
+		</div>
+	</div>
+<div th:replace="Emp/footer"></div>	
+</body>
+</html>

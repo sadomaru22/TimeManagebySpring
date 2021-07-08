@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>管理者ログイン画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/JS/function.js}"></script>
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+
+<div class="main_wrapper">
+
+		<div class="menu">
+			<div class="main_frame">
+				<p>従業員登録</p>
+			</div>
+		</div>
+
+	<form action="/admin/admin_regist" method="post" 
+		onsubmit="return chk()" th:object="${employee}">
+			<div class="comment_show_all" id="comment_show_all">
+			<p>すべて入力してください↓</p>			
+			</div>
+			<div class="comment_error" id="comment_error">{&lt;&gt;&amp;.,/}の入力はできません</div>
+			<div class="regist_table">
+				<table>
+					<tr>
+						<td>従業員コード</td>
+						<td>：</td>
+						<td><input type="text" th:field="*{employee_code}" id="last_name" required/>
+						</td>
+					</tr>
+					<tr>
+						<td>名前</td>
+						<td>：</td>
+						<td><input type="text" th:field="*{name}" id="first_name" required/></td>
+					</tr>
+					<tr>
+						<td>部署</td>
+						<td>：</td>
+						<td><input type="text" th:field="*{post}" id="last_kana_name" required/></td>
+					</tr>
+					<tr><td></td></tr>
+					<tr>
+						<td>パスワード</td>
+						<td>：</td>
+						<td><input type="password" th:field="*{password}" id="password" required/></td>
+						<td><div id="comment_password">半角英数8文字以上32文字以下で入力してください</div></td>
+					</tr>
+					<tr>
+						<td>もう一度</td>
+						<td>：</td>
+						<td><input type="password" name="confirmation"
+							id="confirmation"></td>
+						<td>
+							<div id="comment_confirmation">パスワードと違います</div>
+						</td>
+					</tr>
+				</table>
+
+				<div class="tomenu_button">
+					<div class="admin_user_button">
+						<input type="submit" class="admin_user_submit" value="登録する">
+
+						<a href="/admin/menuBack"> <input type="button" class="clear_button"
+							value="キャンセル">
+						</a>
+					</div>
+				</div>
+			</div>
+		</form>
+</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>

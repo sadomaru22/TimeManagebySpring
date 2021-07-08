@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員削除画面</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="Emp/header"></div>
+	<div class="main_wrapper">
+		<div class="menu">
+			<div class="main_frame">
+				<p>削除確認</p>
+			</div>
+		</div>
+	<p th:text="${name}"></p>
+	<p>さんをデータベースから削除します。よろしいですか？</p>
+	
+	<a href="/admin/delete_employee" class="regist_button">
+		<button class="display_button">削除する</button>
+	</a> <a href="/admin/menuBack">
+		<button class="display_button">やめる</button>
+	</a>
+	
+	</div>
+<div th:replace="Emp/footer"></div>
+</body>
+</html>
